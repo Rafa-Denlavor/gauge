@@ -1,0 +1,80 @@
+.gaugeWrapper {
+  text-align: center;
+  white-space: pre-line;
+
+  .halfCircle {
+    height: 150px;
+    width: 300px;
+    border-radius: 150px 150px 0 0;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    &:before,
+    &:after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    &:before {
+      left: -10px;
+      bottom: -6%;
+    }
+
+    &:after {
+      right: -10px;
+      bottom: -6%;
+    }
+  }
+
+  .score {
+    font-weight: 600;
+    font-size: 40px;
+    padding-top: 24px;
+  }
+
+  .label {
+    font-weight: 600;
+    color: #595959;
+    font-size: 30px;
+    padding-top: 24px;
+  }
+}
+
+@mixin gaugeColor($borderColor, $backgroundColor, $textColor) {
+  border-top: 10px solid $borderColor;
+  border-left: 10px solid $borderColor;
+  border-right: 10px solid $borderColor;
+  background-image: linear-gradient(to bottom, $backgroundColor, #fafafa);
+
+  &:before,
+  &:after {
+    background: $borderColor;
+  }
+
+  .score {
+    color: $textColor;
+  }
+}
+
+.good {
+  @include gaugeColor(#b7eb8f, #d9f7be, #389e0d);
+}
+
+.warn {
+  @include gaugeColor(#ffc53d, #fff1b8, #faad14);
+}
+
+.bad {
+  @include gaugeColor(#ffa39e, #ffccc7, #cf1322);
+}
+
+.neutral {
+  @include gaugeColor(#bfbfbf, #d8d8d8, #595959);
+}
