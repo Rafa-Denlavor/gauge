@@ -14,7 +14,7 @@ function Gauge(props) {
 }
 
 Gauge.propTypes = {
-  meaning: propTypes.oneOf(['good', 'warn', 'bad']).isRequired,
+  meaning: propTypes.oneOf(['good', 'warn', 'bad', 'neutral']).isRequired,
 };
 
 export default Gauge;
